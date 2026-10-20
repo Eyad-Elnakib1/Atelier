@@ -1,0 +1,26 @@
+[
+ {
+  "id": "ccp-0120",
+  "title": "Leopard coat",
+  "image": "/samples/ccp-0120.jpg",
+  "result": "/samples/ccp-0120.json"
+ },
+ {
+  "id": "ccp-0777",
+  "title": "Bomber and dress",
+  "image": "/samples/ccp-0777.jpg",
+  "result": "/samples/ccp-0777.json"
+ },
+ {
+  "id": "ccp-0333",
+  "title": "Safari shorts",
+  "image": "/samples/ccp-0333.jpg",
+  "result": "/samples/ccp-0333.json"
+ },
+ {
+  "id": "ccp-0642",
+  "title": "Sequin skirt",
+  "image": "/samples/ccp-0642.jpg",
+  "result": "/samples/ccp-0642.json"
+ }
+]

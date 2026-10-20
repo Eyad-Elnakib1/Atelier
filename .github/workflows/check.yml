@@ -1,0 +1,36 @@
+# Runs on every push and pull request: the website must build, and all Python files must compile.
+# Cheap checks that need no GPU and no model weights.
+name: check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: demo/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: demo/web/package-lock.json
+      - run: npm ci
+      - run: npm run build
+
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile every Python file
+        # notebooks/*.py are Colab cells with "!" shell lines, so they are not compiled
+        run: python -m compileall -q src scripts tools demo/server
+      - name: The clothseg package and its data module are present
+        run: test -f src/clothseg/data/dataset.py && test -f src/clothseg/inference.py

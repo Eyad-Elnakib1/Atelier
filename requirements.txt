@@ -1,0 +1,15 @@
+# Colab already provides torch, torchvision, transformers, numpy, pillow, pyarrow,
+# matplotlib and huggingface_hub. They are listed without pins so pip keeps Colab's
+# own builds (reinstalling torch would break the GPU setup). The first notebook
+# cell prints the installed versions; exact pins are added from that output.
+torch
+transformers
+huggingface_hub
+numpy
+pillow
+pyarrow
+matplotlib
+opencv-python-headless
+# Not preinstalled in Colab:
+segmentation-models-pytorch==0.5.0
+timm

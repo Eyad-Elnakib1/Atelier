@@ -1,0 +1,15 @@
+# Running the trained model locally on CPU (scripts/segment.py, the Python API, the demo server).
+# Same versions as the demo server (demo/server/requirements.txt), tested together on 2026-10-15.
+# Install PyTorch first from the CPU-only index, then this file:
+#   pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements-inference.txt
+# For training, use requirements.txt on Colab instead.
+transformers==5.5.0
+huggingface_hub==1.9.0
+safetensors==0.6.2
+numpy==2.4.4
+pillow==12.0.0
+opencv-python-headless==4.13.0.92
+fastapi==0.115.2
+uvicorn==0.30.6
+python-multipart==0.0.32

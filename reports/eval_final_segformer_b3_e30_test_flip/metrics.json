@@ -1,0 +1,20 @@
+{
+  "checkpoint": "/content/drive/MyDrive/clothseg/runs/final_segformer_b3_e30/checkpoints/best.pt",
+  "model": "segformer_b3",
+  "epoch": 28,
+  "split": "test",
+  "num_images": 960,
+  "num_classes": 15,
+  "resolution": "original",
+  "flip_tta": true,
+  "miou": 0.7885555244921226,
+  "garment_miou": 0.7438633387941018,
+  "clothing_binary_iou": 0.9297902340652217,
+  "pixel_acc": 0.9700504537379901,
+  "mean_class_acc": 0.8733117108218575,
+  "mean_dice": 0.8779236764946219,
+  "boundary_miou": 0.7304818597307675,
+  "garment_boundary_miou": 0.6756718212017987,
+  "core_garment_miou": 0.7864522916758713,
+  "ms_per_image": 105.15787750482559
+}

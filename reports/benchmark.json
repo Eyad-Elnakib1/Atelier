@@ -1,0 +1,49 @@
+{
+  "gpu": "NVIDIA L4",
+  "torch": "2.11.0+cu130",
+  "args": {
+    "models": "['segformer_b2', 'segformer_b3', 'segformer_b4', 'upernet_convnext_tiny']",
+    "height": "576",
+    "width": "384",
+    "batch_size": "16",
+    "num_classes": "15",
+    "steps": "30",
+    "warmup": "5",
+    "train_images": "16000",
+    "out": "/content/drive/MyDrive/clothseg/reports/benchmark.json"
+  },
+  "results": [
+    {
+      "model": "segformer_b2",
+      "params_M": 27.4,
+      "train_img_per_s": 35.4,
+      "min_per_epoch": 7.5,
+      "train_vram_GB": 11.83,
+      "infer_ms_per_img": 21.2
+    },
+    {
+      "model": "segformer_b3",
+      "params_M": 47.2,
+      "train_img_per_s": 29.0,
+      "min_per_epoch": 9.2,
+      "train_vram_GB": 14.41,
+      "infer_ms_per_img": 35.8
+    },
+    {
+      "model": "segformer_b4",
+      "params_M": 64.0,
+      "train_img_per_s": 23.8,
+      "min_per_epoch": 11.2,
+      "train_vram_GB": 17.53,
+      "infer_ms_per_img": 52.1
+    },
+    {
+      "model": "upernet_convnext_tiny",
+      "params_M": 37.0,
+      "train_img_per_s": 43.3,
+      "min_per_epoch": 6.2,
+      "train_vram_GB": 8.25,
+      "infer_ms_per_img": 11.0
+    }
+  ]
+}

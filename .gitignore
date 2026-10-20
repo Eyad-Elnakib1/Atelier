@@ -1,0 +1,42 @@
+# Personal and working files (kept on the local machine only)
+/_private/
+
+# Datasets, training runs and model weights never go into the repository.
+# Anchored with a leading slash so that src/clothseg/data/ (code) is NOT ignored.
+/Human_Parsing_Dataset*/
+/datasets/
+/data/
+/runs/
+*.pt
+*.pth
+*.tar
+*.parquet
+*.zip
+
+# Office lock files
+~$*
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Assembled Hugging Face Space (rebuilt by tools/build_space.py)
+/demo/space_build/
+
+# Website build output, packages and local settings
+/demo/web/node_modules/
+/demo/web/dist/
+/demo/web/*.tsbuildinfo
+/demo/web/.env
+/demo/web/.env.local
+/demo/web/.vercel/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini

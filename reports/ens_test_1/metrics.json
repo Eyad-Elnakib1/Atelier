@@ -1,0 +1,24 @@
+{
+  "checkpoint": "/content/drive/MyDrive/clothseg/runs/r1_upernet_convnext_tiny/checkpoints/best.pt",
+  "ensemble_with": [],
+  "model": "upernet_convnext_tiny",
+  "epoch": 12,
+  "split": "val",
+  "num_images": 690,
+  "num_classes": 15,
+  "resolution": "original",
+  "flip_tta": true,
+  "scales": [
+    1.0
+  ],
+  "miou": 0.7717345161995726,
+  "garment_miou": 0.7198381214330658,
+  "clothing_binary_iou": 0.9277034999729454,
+  "pixel_acc": 0.9702196355707551,
+  "mean_class_acc": 0.8651799511594388,
+  "mean_dice": 0.8661849957606197,
+  "boundary_miou": 0.720118013292486,
+  "garment_boundary_miou": 0.6600937173582064,
+  "core_garment_miou": 0.7704650833798461,
+  "ms_per_image": 40.98865985870361
+}
