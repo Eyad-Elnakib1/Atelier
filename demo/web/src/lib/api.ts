@@ -1,8 +1,11 @@
-// Client for the model server (demo/server/app.py), usually a Hugging Face Space.
-// Its address comes from VITE_API_URL at build time.
+// Client for the model server (demo/server/app.py).
+// Its address comes from VITE_API_URL at build time. Without it the site is a showcase:
+// the sample looks (segmented by the model ahead of time) and every tool work, but there is no upload.
 
-export const API_URL: string =
-  ((import.meta.env.VITE_API_URL as string | undefined) || "http://localhost:7860").replace(/\/+$/, "");
+export const API_URL: string = ((import.meta.env.VITE_API_URL as string | undefined) || "").trim().replace(/\/+$/, "");
+
+/** True when a model server is configured, so visitors can upload their own photo. */
+export const LIVE: boolean = API_URL.length > 0;
 
 export interface SegClass {
   id: number;

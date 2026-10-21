@@ -10,7 +10,7 @@ interface Preview {
 
 interface Props {
   previews: Preview[];
-  onTry: () => void;
+  onTry?: () => void; // absent in showcase mode (no model server)
   onSample: () => void;
   onTool: (id: ToolId) => void;
 }
@@ -71,12 +71,19 @@ export default function Hero({ previews, onTry, onSample, onTool }: Props) {
             <em>reimagined.</em>
           </h1>
           <p className="lede">
-            Upload a photo of what you are wearing and try every piece in a new colour or fabric.
-            Find your next look — before you buy, dye or sew a thing.
+            {onTry
+              ? "Upload a photo of what you are wearing and try every piece in a new colour or fabric. Find your next look — before you buy, dye or sew a thing."
+              : "See every garment in a photo found, cut out and taken apart — then try any piece in a new colour or fabric. Explore five sample looks."}
           </p>
           <div className="hero-actions">
-            <button className="btn btn-cream" onClick={onTry}>Try your photo</button>
-            <button className="btn btn-glass" onClick={onSample}>See a sample look</button>
+            {onTry ? (
+              <>
+                <button className="btn btn-cream" onClick={onTry}>Try your photo</button>
+                <button className="btn btn-glass" onClick={onSample}>See a sample look</button>
+              </>
+            ) : (
+              <button className="btn btn-cream" onClick={onSample}>Explore the sample looks</button>
+            )}
           </div>
           <nav className="hero-tools" aria-label="Jump to a tool">
             {TOOLS.map((t, i) => (

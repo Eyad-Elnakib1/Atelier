@@ -22,5 +22,11 @@
   "title": "Sequin skirt",
   "image": "/samples/ccp-0642.jpg",
   "result": "/samples/ccp-0642.json"
+ },
+ {
+  "id": "ccp-0045",
+  "title": "Red lace skirt",
+  "image": "/samples/ccp-0045.jpg",
+  "result": "/samples/ccp-0045.json"
  }
 ]

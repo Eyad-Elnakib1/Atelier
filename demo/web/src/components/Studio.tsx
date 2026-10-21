@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { segment, type SegResult } from "../lib/api";
+import { LIVE, segment, type SegResult } from "../lib/api";
 import { CLASSES, css } from "../lib/classes";
 import { prepare, render, type Prepared, type View } from "../lib/compose";
 import { useHints } from "../lib/hints";
@@ -141,15 +141,16 @@ export default function Studio({ samples, modelState, look, onLook, pickerRef }:
   return (
     <section className="studio" id="studio" aria-labelledby="studio-title">
       <SectionHead eyebrow="No. 02 — The fitting room" title="Step in front of the mirror." id="studio-title">
-        Upload a photo of a person, or try one of the looks. Every garment is found and outlined; switch between the views below.
+        {LIVE ? "Upload a photo of a person, or try one of the looks." : "Pick one of the five looks."} Every garment is found and outlined; switch between the views below.
       </SectionHead>
 
       <div className="studio-grid">
         <div
           className={`mirror ${drag ? "is-drag" : ""}`}
-          onDragOver={(e) => { e.preventDefault(); setDrag(true); }}
+          onDragOver={(e) => { if (!LIVE) return; e.preventDefault(); setDrag(true); }}
           onDragLeave={() => setDrag(false)}
           onDrop={(e) => {
+            if (!LIVE) return;
             e.preventDefault();
             setDrag(false);
             const f = e.dataTransfer.files?.[0];
@@ -211,6 +212,10 @@ export default function Studio({ samples, modelState, look, onLook, pickerRef }:
                     )}
                   </AnimatePresence>
                 </motion.div>
+              ) : !LIVE ? (
+                <motion.div key="loading" className="mirror-empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                  <span className="serif">Loading the looks…</span>
+                </motion.div>
               ) : (
                 <motion.button key="empty" className="mirror-empty" onClick={() => fileRef.current?.click()} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                   <span className="mirror-empty-icon" aria-hidden="true">＋</span>
@@ -226,7 +231,7 @@ export default function Studio({ samples, modelState, look, onLook, pickerRef }:
               <input type="range" min={0} max={100} value={split} onChange={(e) => { setSplit(Number(e.target.value)); markSeen("compare"); }} aria-label="Compare the view with the original photo" />
             </label>
           )}
-          <p className="mirror-tip">Tip: you can also drop a photo onto the mirror.</p>
+          {LIVE && <p className="mirror-tip">Tip: you can also drop a photo onto the mirror.</p>}
           <input
             ref={fileRef}
             type="file"
@@ -242,7 +247,7 @@ export default function Studio({ samples, modelState, look, onLook, pickerRef }:
 
         <aside className="studio-panel">
           <div className="panel-block">
-            <span className="panel-title mono">Try a look</span>
+            <span className="panel-title mono">{LIVE ? "Try a look" : "Pick a look"}</span>
             <div className="sample-row">
               {samples.map((s) => (
                 <button key={s.id} className={`sample ${look?.title === s.title ? "is-on" : ""}`} onClick={() => runSample(s)} disabled={!!busy} aria-label={`Try the sample look: ${s.title}`}>
@@ -251,10 +256,14 @@ export default function Studio({ samples, modelState, look, onLook, pickerRef }:
                 </button>
               ))}
             </div>
-            <div className="upload-row">
-              <button className="btn btn-ink" onClick={() => fileRef.current?.click()} disabled={!!busy}>Upload your photo</button>
-            </div>
-            <ModelNote state={modelState} />
+            {LIVE && (
+              <>
+                <div className="upload-row">
+                  <button className="btn btn-ink" onClick={() => fileRef.current?.click()} disabled={!!busy}>Upload your photo</button>
+                </div>
+                <ModelNote state={modelState} />
+              </>
+            )}
           </div>
 
           <AnimatePresence>

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { LIVE } from "../lib/api";
 import SectionHead from "./SectionHead";
 
 const reveal = {
@@ -10,10 +11,14 @@ const reveal = {
 
 export function HowItWorks() {
   const steps = [
-    { n: "01", t: "Upload a photo", d: "One person, head to toe, any size or orientation. Or start with one of the sample looks." },
+    LIVE
+      ? { n: "01", t: "Upload a photo", d: "One person, head to toe, any size or orientation. Or start with one of the sample looks." }
+      : { n: "01", t: "Pick a look", d: "Five street-style photos, each segmented by the model ahead of time." },
     { n: "02", t: "Every piece found", d: "Each garment and accessory is outlined and separated from the body and the background." },
     { n: "03", t: "Restyle it", d: "Try any piece in a new colour or fabric and compare before and after — right in your browser." },
-    { n: "04", t: "Private by design", d: "Your photo is processed in memory and never stored. Nothing you try is saved anywhere." },
+    LIVE
+      ? { n: "04", t: "Private by design", d: "Your photo is processed in memory and never stored. Nothing you try is saved anywhere." }
+      : { n: "04", t: "Runs in your browser", d: "Every view, cut-out and restyle is drawn on your device. Nothing is sent anywhere." },
   ];
   return (
     <section className="how-section" aria-labelledby="how-title">
@@ -37,7 +42,7 @@ export function Footer() {
       <div className="footer-mark serif">Atelier</div>
       <p>Your outfit, piece by piece.</p>
       <p className="muted small">
-        Photos you upload are processed in memory and never stored. Sample photos: Clothing Co-Parsing (Apache-2.0).
+        {LIVE ? "Photos you upload are processed in memory and never stored. " : ""}Sample photos: Clothing Co-Parsing (Apache-2.0). Model: for non-commercial research and evaluation use.
       </p>
     </footer>
   );

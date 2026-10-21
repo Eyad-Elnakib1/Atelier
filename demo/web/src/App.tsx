@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { isReady, type SegResult } from "./lib/api";
+import { isReady, LIVE, type SegResult } from "./lib/api";
 import { prepare, type Prepared } from "./lib/compose";
 import { piecesOf } from "./lib/pieces";
 import type { ToolId } from "./lib/tools";
@@ -19,7 +19,7 @@ export default function App() {
   const [samples, setSamples] = useState<Sample[]>([]);
   const [previews, setPreviews] = useState<{ title: string; prepared: Prepared }[]>([]);
   const [look, setLook] = useState<Look | null>(null);
-  const [model, setModel] = useState<ModelState>("checking");
+  const [model, setModel] = useState<ModelState>(LIVE ? "checking" : "offline");
   const picker = useRef<(() => void) | null>(null);
   // Garments of the current look with their colours, used by the style studio.
   const pieces = useMemo(() => (look ? piecesOf(look.prepared, look.result) : []), [look]);
@@ -45,8 +45,9 @@ export default function App() {
       .catch(() => undefined);
   }, []);
 
-  // A free model server sleeps when unused; keep asking for a while so it can wake up.
+  // A free model server sleeps when unused; keep asking for a while so it can wake up. No server in showcase mode.
   useEffect(() => {
+    if (!LIVE) return;
     let stop = false;
     (async () => {
       for (let attempt = 0; attempt < 30 && !stop; attempt++) {
@@ -78,13 +79,15 @@ export default function App() {
     <>
       <nav className="nav" aria-label="Site">
         <span className="nav-mark serif">Atelier</span>
-        <span className={`status status-${model}`} role="status" aria-live="polite">
-          <i aria-hidden="true" />
-          {{ checking: "Connecting", ready: "Ready", waking: "Starting up", offline: "Offline · samples available" }[model]}
-        </span>
+        {LIVE && (
+          <span className={`status status-${model}`} role="status" aria-live="polite">
+            <i aria-hidden="true" />
+            {{ checking: "Connecting", ready: "Ready", waking: "Starting up", offline: "Offline · samples available" }[model]}
+          </span>
+        )}
       </nav>
       <main>
-        <Hero previews={previews} onTry={() => toStudio(true)} onSample={() => toStudio(false)} onTool={openTool} />
+        <Hero previews={previews} onTry={LIVE ? () => toStudio(true) : undefined} onSample={() => toStudio(false)} onTool={openTool} />
         <Studio samples={samples} modelState={model} look={look} onLook={setLook} pickerRef={picker} />
         <Rail look={look} />
         <Layers look={look} />
