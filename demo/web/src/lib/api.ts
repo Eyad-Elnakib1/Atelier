@@ -1,10 +1,14 @@
 // Client for the model server (demo/server/app.py).
-// Its address comes from VITE_API_URL at build time. Without it the site is a showcase:
+// Its address comes from VITE_API_URL at build time, and defaults to a local server on port 7860.
+// VITE_SHOWCASE=1 (set only by the Vercel build, in vercel.json) makes the site a showcase:
 // the sample looks (segmented by the model ahead of time) and every tool work, but there is no upload.
 
-export const API_URL: string = ((import.meta.env.VITE_API_URL as string | undefined) || "").trim().replace(/\/+$/, "");
+const ENV_URL = ((import.meta.env.VITE_API_URL as string | undefined) || "").trim();
+const SHOWCASE = ["1", "true"].includes(String(import.meta.env.VITE_SHOWCASE ?? "").trim().toLowerCase());
 
-/** True when a model server is configured, so visitors can upload their own photo. */
+export const API_URL: string = (ENV_URL || (SHOWCASE ? "" : "http://localhost:7860")).replace(/\/+$/, "");
+
+/** True when the site talks to a model server, so visitors can upload their own photo. */
 export const LIVE: boolean = API_URL.length > 0;
 
 export interface SegClass {

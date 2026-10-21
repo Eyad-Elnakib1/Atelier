@@ -22,7 +22,7 @@ The reasoning behind every choice (dataset, model, loss, settings), with sources
 | ![Anatomy of an outfit: the garments as stacked layers](docs/images/layers.png) | ![Style studio: a jacket restyled in argyle with a before/after slider](docs/images/style-studio.png) |
 | The outfit taken apart into stacked 3D layers, one per garment. | Dye one or several pieces any colour or dress them in one of 12 fabrics (or your own), keeping their folds; before/after slider and download. |
 
-The public site is a **showcase**: five sample looks, segmented by the model ahead of time, with every view, cut-out and restyle computed in the browser — no server needed, so it is hosted for free as a static site. Run the model server locally to upload your own photos. Setup and deployment: [demo/README.md](demo/README.md).
+Downloaded and run locally, the site works in full: upload a photo and the local model server segments it. The public link is a **showcase** of the same site: five sample looks segmented by the model ahead of time, with every view, cut-out and restyle computed in the browser — no server needed, so it is hosted for free as a static site. Setup and deployment: [demo/README.md](demo/README.md).
 
 ## Results
 

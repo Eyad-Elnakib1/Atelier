@@ -6,8 +6,8 @@ Two modes:
 
 | Mode | When | What visitors can do |
 |---|---|---|
-| **Showcase** (the public site) | `VITE_API_URL` not set | Explore five sample looks segmented by the model ahead of time: every view, cut-out, layer and restyle. No server; hosted free as a static site on Vercel. |
-| **Live** | `VITE_API_URL` points to the model server (`demo/server/`) | Everything above, plus uploading their own photo. |
+| **Showcase** (the public site) | Built by Vercel: `vercel.json` sets `VITE_SHOWCASE=1` | Explore five sample looks segmented by the model ahead of time: every view, cut-out, layer and restyle. No server; hosted free as a static site on Vercel. |
+| **Full** (default everywhere else) | The site talks to the model server (`demo/server/`), by default at `http://localhost:7860`, or at `VITE_API_URL` | Everything above, plus uploading their own photo. |
 
 The model cannot run on Vercel itself: a Vercel function may be at most 250 MB uncompressed, and PyTorch plus the 189 MB weights are larger ([Vercel limits](https://vercel.com/docs/functions/limitations)). Hosting the server on a Hugging Face Docker Space now needs a PRO subscription ([pricing](https://huggingface.co/pricing)), so the public site runs as a showcase.
 
@@ -26,25 +26,25 @@ The model cannot run on Vercel itself: a Vercel function may be at most 250 MB u
 
 The server returns only the label mask (one class id per pixel); every view and tool is computed in the browser. Photos are processed in memory and not stored. The five sample looks are photos from the Clothing Co-Parsing dataset (Apache-2.0) with results pre-computed by the same model and the same server code (`flip=true`).
 
-## Run locally
+## Run locally (full site, with upload)
 
 ```bash
-# Showcase only (sample looks, no upload)
+# 1. model server (needs best.pt in the project root: download it from the GitHub Release v1.0)
+py -3 -m uvicorn demo.server.app:app --port 7860
+# 2. website
 cd demo/web
 npm install
-npm run dev          # http://localhost:5173
-
-# Live mode: also start the model server (needs best.pt in the project root, from the GitHub Release)
-py -3 -m uvicorn demo.server.app:app --port 7860
-# and in demo/web create .env.local with:  VITE_API_URL=http://localhost:7860
+npm run dev          # http://localhost:5173, talks to http://localhost:7860
 ```
+
+Without the server running, the five sample looks and every tool still work, and the site says that photo upload is unavailable. To try the showcase locally: `VITE_SHOWCASE=1 npm run dev`.
 
 Tests of the server: `py -3 demo/server/test_app.py <folder with .jpg photos>`.
 
 ## Deploy the showcase (free)
 
-Import the GitHub repository in Vercel (Hobby plan) with **Root Directory** `demo/web` and no environment variables, then deploy. Every push to `main` redeploys the site.
+Import the GitHub repository in Vercel (Hobby plan) with **Root Directory** `demo/web` and no environment variables, then deploy. `vercel.json` builds it as the showcase (`VITE_SHOWCASE=1`). Every push to `main` redeploys the site.
 
 ## Deploy the live mode (optional)
 
-`py -3 tools/build_space.py` assembles `demo/space_build/` (app, Dockerfile, the `clothseg` package and `best.pt`) for a Docker host such as a Hugging Face Docker Space (PRO) or Google Cloud Run. Then set `VITE_API_URL` in Vercel to the server's address and `ALLOWED_ORIGINS` on the server to the site's address.
+`py -3 tools/build_space.py` assembles `demo/space_build/` (app, Dockerfile, the `clothseg` package and `best.pt`) for a Docker host such as a Hugging Face Docker Space (PRO) or Google Cloud Run. Then set `VITE_API_URL` in Vercel to the server's address (it overrides the showcase) and `ALLOWED_ORIGINS` on the server to the site's address.
