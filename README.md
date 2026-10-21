@@ -4,7 +4,9 @@
 
 Segments the clothes worn by a person in a photo. Given a personal photo of any size, the pipeline returns a label mask, a colour overlay, and one transparent cut-out per garment. **Atelier**, the web app in [`demo/`](demo/README.md), is built on it: upload a photo of what you are wearing and try every piece in a new colour or fabric.
 
-<p align="center"><img src="docs/images/home.png" alt="Atelier home page: Your outfit, reimagined" width="900"></p>
+<p align="center"><strong>Live demo: <a href="https://atelier-two-omega.vercel.app">atelier-two-omega.vercel.app</a></strong></p>
+
+<p align="center"><a href="https://atelier-two-omega.vercel.app"><img src="docs/images/home.png" alt="Atelier home page: Your outfit, reimagined" width="900"></a></p>
 
 - **Model:** SegFormer-B3, fine-tuned from ImageNet weights.
 - **Dataset:** ATR (17,706 single-person fashion photos), mapped to 15 classes.
@@ -22,7 +24,7 @@ The reasoning behind every choice (dataset, model, loss, settings), with sources
 | ![Anatomy of an outfit: the garments as stacked layers](docs/images/layers.png) | ![Style studio: a jacket restyled in argyle with a before/after slider](docs/images/style-studio.png) |
 | The outfit taken apart into stacked 3D layers, one per garment. | Dye one or several pieces any colour or dress them in one of 12 fabrics (or your own), keeping their folds; before/after slider and download. |
 
-Downloaded and run locally, the site works in full: upload a photo and the local model server segments it. The public link is a **showcase** of the same site: five sample looks segmented by the model ahead of time, with every view, cut-out and restyle computed in the browser — no server needed, so it is hosted for free as a static site. Setup and deployment: [demo/README.md](demo/README.md).
+Downloaded and run locally, the site works in full: upload a photo and the local model server segments it. The public link, **[atelier-two-omega.vercel.app](https://atelier-two-omega.vercel.app)**, is a **showcase** of the same site: five sample looks segmented by the model ahead of time, with every view, cut-out and restyle computed in the browser — no server needed, so it is hosted for free as a static site. Setup and deployment: [demo/README.md](demo/README.md).
 
 ## Results
 

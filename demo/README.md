@@ -11,6 +11,8 @@ Two modes:
 
 The model cannot run on Vercel itself: a Vercel function may be at most 250 MB uncompressed, and PyTorch plus the 189 MB weights are larger ([Vercel limits](https://vercel.com/docs/functions/limitations)). Hosting the server on a Hugging Face Docker Space now needs a PRO subscription ([pricing](https://huggingface.co/pricing)), so the public site runs as a showcase.
 
+**Live showcase:** https://atelier-two-omega.vercel.app
+
 ## What the website does
 
 - **First screen:** the five sample looks fade one into the next behind the headline.
