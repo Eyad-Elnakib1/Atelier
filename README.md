@@ -9,6 +9,7 @@
   <a href="https://github.com/Eyad-Elnakib1/Atelier/releases/tag/v1.0"><img src="https://img.shields.io/badge/Model-best.pt%20(v1.0)-2a2420?style=flat-square" alt="Model: best.pt, release v1.0"></a>
   <a href="report_latex/report.pdf"><img src="https://img.shields.io/badge/Report-PDF-2a2420?style=flat-square" alt="Report: PDF"></a>
   <a href="notebooks/executed"><img src="https://img.shields.io/badge/Executed%20notebooks-8-2a2420?style=flat-square" alt="Executed notebooks: 8"></a>
+  <a href="https://drive.google.com/drive/folders/1Zuh5532V4xeopME7XDJbO_hnXTACT4qF?usp=sharing"><img src="https://img.shields.io/badge/Google%20Drive-runs%20%26%20results-2a2420?style=flat-square" alt="Google Drive: training runs and results"></a>
 </p>
 
 # Atelier — clothes segmentation and outfit restyling
@@ -303,6 +304,18 @@ python scripts/train.py $R --run-name final_segformer_b3_e30 --model segformer_b
 | `colab_ranks_executed.ipynb` | Two fine-tuning experiments on the final model | Section IV-D |
 | `colab_improve_executed.ipynb` | Two improvement experiments | Section IV-D |
 | `colab_dual_executed.ipynb` | Merged two-encoder model | Section IV-D |
+
+## Training runs and results (Google Drive)
+
+Everything the Colab notebooks wrote is in a shared Google Drive folder: **[clothseg on Google Drive](https://drive.google.com/drive/folders/1Zuh5532V4xeopME7XDJbO_hnXTACT4qF?usp=sharing)**.
+
+| Folder | Contents |
+|---|---|
+| `runs/` | Every training run: checkpoints, training logs and validation scores per epoch (model comparison, ablations, final 30-epoch model) |
+| `runs_yolo/` | The YOLO26x-sem run trained on ATR for comparison |
+| `reports/` | Evaluation outputs: metrics, per-class scores, confusion matrices, best and worst examples, comparisons |
+| `data/` | The prepared ATR dataset (raw download and cache) |
+| `code/` | The code copy the notebooks ran |
 
 ## Limitations
 
