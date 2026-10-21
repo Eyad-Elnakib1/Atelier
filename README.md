@@ -1,12 +1,31 @@
-<p align="center"><img src="docs/images/logo.png" alt="Atelier" height="44"></p>
+<p align="center"><a href="https://atelier-two-omega.vercel.app"><img src="docs/images/logo.png" alt="Atelier" width="300"></a></p>
+
+<h3 align="center">Your outfit, reimagined.</h3>
+
+<p align="center">
+  <a href="https://atelier-two-omega.vercel.app"><img src="https://img.shields.io/badge/Live%20website-atelier--two--omega.vercel.app-e8794b?style=for-the-badge" alt="Live website: atelier-two-omega.vercel.app"></a>
+</p>
+<p align="center">
+  <a href="https://github.com/Eyad-Elnakib1/Atelier/releases/tag/v1.0"><img src="https://img.shields.io/badge/Model-best.pt%20(v1.0)-2a2420?style=flat-square" alt="Model: best.pt, release v1.0"></a>
+  <a href="report_latex/report.pdf"><img src="https://img.shields.io/badge/Report-PDF-2a2420?style=flat-square" alt="Report: PDF"></a>
+  <a href="notebooks/executed"><img src="https://img.shields.io/badge/Executed%20notebooks-8-2a2420?style=flat-square" alt="Executed notebooks: 8"></a>
+</p>
 
 # Atelier — clothes segmentation and outfit restyling
 
-Segments the clothes worn by a person in a photo. Given a personal photo of any size, the pipeline returns a label mask, a colour overlay, and one transparent cut-out per garment. **Atelier**, the web app in [`demo/`](demo/README.md), is built on it: upload a photo of what you are wearing and try every piece in a new colour or fabric.
-
-<p align="center"><strong>Live demo: <a href="https://atelier-two-omega.vercel.app">atelier-two-omega.vercel.app</a></strong></p>
+**Open the website: [atelier-two-omega.vercel.app](https://atelier-two-omega.vercel.app)** — no sign-up, nothing to install.
 
 <p align="center"><a href="https://atelier-two-omega.vercel.app"><img src="docs/images/home.png" alt="Atelier home page: Your outfit, reimagined" width="900"></a></p>
+
+### Try it in one minute
+
+1. Click **Explore the sample looks** and pick one of the five looks.
+2. In the fitting room, drag the line across the mirror to compare the photo with what the model found; switch views (colour map, clothes only, overlay, person without background).
+3. Scroll to **the rail** to see every garment cut out, and download any piece as a PNG.
+4. Open **Anatomy of an outfit** to take the look apart into layers.
+5. In the **style studio**, pick a piece and try a new colour or one of 12 fabrics; drag the before/after slider.
+
+Segments the clothes worn by a person in a photo. Given a personal photo of any size, the pipeline returns a label mask, a colour overlay, and one transparent cut-out per garment. **Atelier**, the web app in [`demo/`](demo/README.md), is built on it.
 
 - **Model:** SegFormer-B3, fine-tuned from ImageNet weights.
 - **Dataset:** ATR (17,706 single-person fashion photos), mapped to 15 classes.
