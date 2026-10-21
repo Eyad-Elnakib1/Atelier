@@ -41,7 +41,7 @@ Run this after a training run has produced a `best.pt`. It does not train anythi
 2. Set `RUN_NAME` in cell 1 to the run you want to look at.
 3. Run the cells from top to bottom. Cell 3 asks for the new `clothseg_code.zip` once."""),
     md("## 1. Settings"),
-    code(f'''REPO_URL = ""  # leave empty to use the uploaded zip
+    code(f'''REPO_URL = "https://github.com/Eyad-Elnakib1/Atelier.git"  # this repository; set to "" to use an uploaded clothseg_code.zip instead
 
 DRIVE_ROOT = "/content/drive/MyDrive/clothseg"
 CODE_DIR = "/content/clothes-segmentation"
@@ -162,7 +162,7 @@ Trains SegFormer-B2 for 5 epochs **without** data augmentation and compares it w
 
 SegFormer-B2 is used because it fits a 16 GB T4 at batch size 16. Expect roughly 2 to 3 hours on a T4. If the session ends, run all cells again: training continues from the last checkpoint."""),
     md("## 1. Settings"),
-    code(f'''REPO_URL = ""
+    code(f'''REPO_URL = "https://github.com/Eyad-Elnakib1/Atelier.git"  # this repository; set to "" to use an uploaded clothseg_code.zip instead
 
 DRIVE_ROOT = "/content/drive/MyDrive/clothseg"
 CODE_DIR = "/content/clothes-segmentation"
@@ -212,7 +212,7 @@ imp_cells = [
 
 Both decisions are made on the validation split, by rules written down in PLAN.md, section 24, before the results exist."""),
     md("## 1. Settings"),
-    code(f'''REPO_URL = ""
+    code(f'''REPO_URL = "https://github.com/Eyad-Elnakib1/Atelier.git"  # this repository; set to "" to use an uploaded clothseg_code.zip instead
 
 DRIVE_ROOT = "/content/drive/MyDrive/clothseg"
 CODE_DIR = "/content/clothes-segmentation"
@@ -652,7 +652,7 @@ After each photo the notebook asks whether you want to upload another one.
 
 A **T4 GPU is enough**. Run the cells from top to bottom; cell 3 asks for `clothseg_code.zip` only if Drive has an older code version. "Clothes" means the 10 clothing and accessory classes: hat, sunglasses, upper-clothes, skirt, pants, dress, belt, shoes, bag, scarf."""),
     md("## 1. Settings"),
-    code('''REPO_URL = ""
+    code('''REPO_URL = "https://github.com/Eyad-Elnakib1/Atelier.git"  # this repository; set to "" to use an uploaded clothseg_code.zip instead
 
 DRIVE_ROOT = "/content/drive/MyDrive/clothseg"
 CODE_DIR = "/content/clothes-segmentation"
@@ -817,7 +817,7 @@ ccp_cells = [
 
 A **T4 GPU is enough**. About 15 minutes. Run the cells from top to bottom."""),
     md("## 1. Settings"),
-    code('''REPO_URL = ""
+    code('''REPO_URL = "https://github.com/Eyad-Elnakib1/Atelier.git"  # this repository; set to "" to use an uploaded clothseg_code.zip instead
 
 DRIVE_ROOT = "/content/drive/MyDrive/clothseg"
 CODE_DIR = "/content/clothes-segmentation"
@@ -1271,7 +1271,7 @@ compare_cells = [
 
 Use the **L4 GPU**. Run the cells from top to bottom; cell 3 asks for `clothseg_code.zip` once. Training takes a few hours (not measured yet; the first epoch line shows the speed). If the session ends, run cells 1 to 5 and cell 6 again: it continues from the last finished epoch saved on Drive. Once training has finished, cells 7 to 11 can be run in any later session after cells 1 to 5."""),
     md("## 1. Settings"),
-    code('''REPO_URL = ""
+    code('''REPO_URL = "https://github.com/Eyad-Elnakib1/Atelier.git"  # this repository; set to "" to use an uploaded clothseg_code.zip instead
 
 DRIVE_ROOT = "/content/drive/MyDrive/clothseg"
 CODE_DIR = "/content/clothes-segmentation"
@@ -1344,7 +1344,7 @@ For YOLO26x-sem the explanation also covers ATR validation, where it was trained
 
 A **T4 GPU is enough**. About 40 minutes. Run the cells from top to bottom; cell 3 asks for `clothseg_code.zip` only if Drive has an older code version."""),
     md("## 1. Settings"),
-    code('''REPO_URL = ""
+    code('''REPO_URL = "https://github.com/Eyad-Elnakib1/Atelier.git"  # this repository; set to "" to use an uploaded clothseg_code.zip instead
 
 DRIVE_ROOT = "/content/drive/MyDrive/clothseg"
 CODE_DIR = "/content/clothes-segmentation"

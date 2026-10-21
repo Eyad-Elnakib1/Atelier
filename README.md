@@ -130,15 +130,15 @@ Garment classes are 1, 3 to 9, 13 and 14. ATR's left and right shoes, legs and a
 
 ### Google Colab (the tested path)
 
-Open a notebook from `notebooks/` in Colab and choose a GPU runtime. Training needs an L4 (22 GB); evaluation and inference also run on a T4. Each notebook mounts Google Drive, fetches the code, installs the requirements and prepares the data. Set `REPO_URL` in the first cell to this repository's URL.
+Open a notebook from `notebooks/` in Colab and choose a GPU runtime. Training needs an L4 (22 GB); evaluation and inference also run on a T4. Each notebook mounts Google Drive, fetches the code, installs the requirements and prepares the data. The first cell's `REPO_URL` already points to this repository, so each notebook downloads the code from GitHub by itself.
 
 Tested with Python 3.13, PyTorch 2.11.0, transformers 5.18.0, segmentation-models-pytorch 0.5.0, timm 1.0.30.
 
 ### Any machine with a GPU
 
 ```bash
-git clone <this repository>
-cd <repository folder>
+git clone https://github.com/Eyad-Elnakib1/Atelier.git
+cd Atelier
 pip install -r requirements.txt
 ```
 
